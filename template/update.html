@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Update List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+            .modal {
+                background-color: black !important;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" id="btn" onclick="test()" data-bs-toggle="modal" data-bs-target="#updateItem">Open Modal</button>
+
+  <div class="modal fade" id="updateItem" tabindex="-1" aria-labelledby="updateItem" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateItem">Update Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="additem" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="itemname" class="form-label" id="building-item_name">Item Name</label>
+                            <input type="text" class="form-control"  name="itemname"
+                                placeholder="Item Name" value={{data.item_name}} required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="itemquantity" class="form-label">Item Quantity</label> 
+                            <input type="hidden" id="custId" name="custId" value={{data.id}}>
+                            <input type="text" class="form-control" id="itemquantity" name="itemquantity"
+                                placeholder="Item quantity" value={{data.item_quantity}} required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label" >Item Status</label>
+                                <select class="form-select" name="status">
+                                    <option value="Pending" {% ifequal 'Pending' data.item_status%} SELECTED {% endifequal %}>PENDING</option>
+                                    <option value="Bought" {% ifequal 'Bought' data.item_status%} SELECTED {% endifequal %}>BOUGHT</option>
+                                    <option value="Not Available" {% ifequal 'Not Available' data.item_status%} SELECTED {% endifequal %}>NOT AVAILABLE</option>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label" >Date</label>
+                            <input type="date" class="form-control" id="date" name="date" value={{data.date|date:'Y-m-d'}} required>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script>
+    function test(){
+    //alert("Hi");
+    }
+    window.onload = function(){
+    document.getElementById('btn').click();
+    }
+</script>
+    </body> 
+</html>
