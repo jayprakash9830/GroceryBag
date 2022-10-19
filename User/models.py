@@ -10,4 +10,12 @@ class GroceryItem(models.Model):
 
     def __str__(self):
         return self.item_name
+
+class Contact(models.Model):
+    quary_email=models.CharField(max_length=50)
+    queary_contact_number= models.CharField(max_length=50)
+    queary_message=models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.quary_email
     

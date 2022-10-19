@@ -10,5 +10,6 @@ urlpatterns = [
     path('filter',views.filter,name='filter'),
     path('delete/<int:id>',views.delete,name='delete'),
     path('update/<int:id>',views.update,name="update"),
-    path('update/additem',views.finalupdate,name="finalupdate")
+    path('update/additem',views.finalupdate,name="finalupdate"),
+    path('contactUs',views.contactUs,name='contactUs')
 ]

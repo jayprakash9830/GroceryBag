@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from .models import GroceryItem
+from .models import GroceryItem,Contact
 import datetime 
 # Create your views here.
 def index(request):
@@ -100,4 +100,14 @@ def finalupdate(request):
         item=GroceryItem(item_name=itemname,item_quantity=quantity,item_status=status,user_id=request.user,date=date)
         item.save()
         messages.success(request,"Item Updated")
+        return redirect('/')
+    
+def contactUs(request):
+    if request.method=='POST':
+        email=request.POST['emailid']
+        phone=request.POST['contactNumber']
+        message=request.POST['message']
+        item=Contact(quary_email=email,queary_contact_number=phone,queary_message=message)
+        item.save()
+        messages.success(request,"Your Queary has been updated")
         return redirect('/')

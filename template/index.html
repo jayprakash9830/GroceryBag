@@ -57,8 +57,11 @@
                         <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal"
                             data-bs-target="#SignUpModal">SignUp
                         </button>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal"
                             data-bs-target="#LogInModal">LogIn
+                        </button>
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                            data-bs-target="#ContactUsModal"> Contact Us
                         </button>
                         {% endif %}
                     </form>
@@ -176,6 +179,43 @@
                             <label for="loginuserpassword" class="form-label">Password</label>
                             <input type="password" class="form-control" id="loginuserpassword" name="loginpassword"
                                 placeholder="Enter Password" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us Modal-->
+    <div class="modal fade" id="ContactUsModal" tabindex="-1" aria-labelledby="LogInModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogInModal">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="contactUs" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="emailid" class="form-label">Email Id </label>
+                            <input type="email" class="form-control" id="emailid" name="emailid"
+                                placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactNumber" class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumber" name="contactNumber"
+                                placeholder="Enter Phone Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea type="text"  class="form-control" id="message" name="message"
+                            placeholder="please describe your queary" required>
+                            </textarea>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
